@@ -9,11 +9,9 @@ const UseGetPosts = () => {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const data = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
+      const data = await axios.get("http://localhost:5000/api/posts");
 
-      return data?.data;
+      return data?.data?.data;
     },
   });
 

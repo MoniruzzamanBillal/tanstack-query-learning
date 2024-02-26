@@ -27,14 +27,20 @@ const postsController = {
   // add data in database
   async addData(req, res) {
     try {
-      const data = req.body;
+      const { title } = req.body;
 
-      console.log("data in add data method = ", data);
+      const data = {
+        id: Math.random() * 10,
+        title,
+      };
+
+      // console.log("data in add data method = ", data);
       const postData = new postModel(data);
 
       const response = await postData.save();
 
       res.send(response);
+      // res.send({ message: "add new posts " });
     } catch (error) {
       res.send({ error });
     }
